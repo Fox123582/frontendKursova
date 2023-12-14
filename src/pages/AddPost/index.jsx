@@ -15,6 +15,7 @@ import {motion} from "framer-motion";
 
 export const AddPost = () => {
     const {id} = useParams()
+    console.log(id)
     const isEditing = Boolean(id)
 
     const nav = useNavigate()
@@ -89,8 +90,13 @@ export const AddPost = () => {
                 setImageUrl(res.data.imageUrl)
                 setTags(res.data.tags.join(','))
             })
+        } else {
+            setTitle('')
+            setText('')
+            setImageUrl('')
+            setTags('')
         }
-    }, []);
+    }, [id]);
 
   const options = useMemo(
     () => ({
